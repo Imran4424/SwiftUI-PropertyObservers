@@ -7,37 +7,29 @@
 
 import SwiftUI
 
-// we use struct for data independent views
-struct User {
+// we use class for sharing the data into multiple views
+class User: ObservableObject {
     // here
-    // @State Observing these properties
-    var firstName = "Bilbo"
-    var lastName = "Baggins"
+    // @StateObject Observing these properties
+    // @Published marked the properties which we need to watch
+    // we can observe some and ignore some with @Published
+    // sender
+    @Published var firstName = "Bilbo"
+    @Published var lastName = "Baggins"
 }
 
 struct ContentView: View {
-    // by default struct property in not editable
-    // @State is making the property editable
-    // @State variable also updates the views which are using them
-    // @State is designed for simple properties which stays in one view
-    // always make sure to use private for consistency
-    // @State works only with Struct
-    // @State everytime creates a new struct when property changes
-    // @State does not work with classes, in case of class
-    // when property changes, @State can not detect it
-    @State private var user = User()
+    // @StateObject works with classes
+    // @StateObject everytime creates a new class instances when property changes
+    // @StateObject is not the first choice when
+    // we need to share data into multiple views (because everytime creates a new class instances)
+    // receiver
+    @StateObject private var user = User()
 
     var body: some View {
         VStack {
-            // here is no $ sign
-            // we don't want two way binding here
-            // 1 - just read the value
-            // text will not change here
             Text("Your name is \(user.firstName) \(user.lastName)")
 
-            // $ - working as a bidirectional biniding operator
-            // 1 - read the value from name
-            // 2 - also update name while user the name TextField
             TextField("First name", text: $user.firstName)
             TextField("Last name", text: $user.lastName)
         }
