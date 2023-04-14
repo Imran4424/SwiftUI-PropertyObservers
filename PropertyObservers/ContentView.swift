@@ -19,12 +19,11 @@ class User: ObservableObject {
 }
 
 struct ContentView: View {
-    // @StateObject works with classes
-    // @StateObject everytime creates a new class instances when property changes
-    // @StateObject is not the first choice when
-    // we need to share data into multiple views (because everytime creates a new class instances)
+    // @ObservedObject works with classes
+    // @ObservedObject updates the property changes when it receives announcement
+    // @ObservedObject is the first choice when working with class
     // receiver
-    @StateObject private var user = User()
+    @ObservedObject private var user = User()
 
     var body: some View {
         VStack {
