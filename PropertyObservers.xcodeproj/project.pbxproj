@@ -11,6 +11,7 @@
 		1D764DEA29E8768800025B88 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D764DE929E8768800025B88 /* HomeView.swift */; };
 		1D764DEC29E8768900025B88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D764DEB29E8768900025B88 /* Assets.xcassets */; };
 		1D764DEF29E8768900025B88 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D764DEE29E8768900025B88 /* Preview Assets.xcassets */; };
+		1DF606FC2AA49694000D7411 /* BindingProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF606FB2AA49694000D7411 /* BindingProperty.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		1D764DE929E8768800025B88 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		1D764DEB29E8768900025B88 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1D764DEE29E8768900025B88 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1DF606FB2AA49694000D7411 /* BindingProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingProperty.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +54,7 @@
 			isa = PBXGroup;
 			children = (
 				1D764DE729E8768800025B88 /* PropertyObserversApp.swift */,
+				1DF606FB2AA49694000D7411 /* BindingProperty.swift */,
 				1D764DE929E8768800025B88 /* HomeView.swift */,
 				1D764DEB29E8768900025B88 /* Assets.xcassets */,
 				1D764DED29E8768900025B88 /* Preview Content */,
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DF606FC2AA49694000D7411 /* BindingProperty.swift in Sources */,
 				1D764DEA29E8768800025B88 /* HomeView.swift in Sources */,
 				1D764DE829E8768800025B88 /* PropertyObserversApp.swift in Sources */,
 			);
