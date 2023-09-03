@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  HomeView.swift
 //  PropertyObservers
 //
 //  Created by Shah Md Imran Hossain on 13/4/23.
@@ -18,7 +18,7 @@ class User: ObservableObject {
     @Published var lastName = "Baggins"
 }
 
-struct ContentView: View {
+struct HomeView: View {
     // @ObservedObject works with classes
     // @ObservedObject updates the property changes when it receives announcement
     // @ObservedObject is the first choice when working with class
@@ -38,6 +38,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        HomeView()
     }
 }
