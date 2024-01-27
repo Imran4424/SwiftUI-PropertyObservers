@@ -11,7 +11,8 @@ import SwiftUI
 struct PropertyObserversApp: App {
     var body: some Scene {
         WindowGroup {
-            BindingProperty()
+            HomeView()
+//                .environmentObject(User())
         }
     }
 }

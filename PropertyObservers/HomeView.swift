@@ -8,14 +8,32 @@
 import SwiftUI
 
 // we use class for sharing the data into multiple views
+@MainActor
 class User: ObservableObject {
     // here
     // @StateObject Observing these properties
     // @Published marked the properties which we need to watch
     // we can observe some and ignore some with @Published
     // sender
-    @Published var firstName = "Bilbo"
-    @Published var lastName = "Baggins"
+    @Published var name = "Imran Hossain"
+}
+
+struct EditView: View {
+    @EnvironmentObject var user: User
+    
+    var body: some View {
+        TextField("Name", text: $user.name)
+            .autocorrectionDisabled()
+            .textInputAutocapitalization(.never)
+    }
+}
+
+struct DisplayView: View {
+    @EnvironmentObject var user: User
+    
+    var body: some View {
+        Text(user.name)
+    }
 }
 
 struct HomeView: View {
@@ -23,14 +41,12 @@ struct HomeView: View {
     // @ObservedObject updates the property changes when it receives announcement
     // @ObservedObject is the first choice when working with class
     // receiver
-    @ObservedObject private var user = User()
+    @ObservedObject var user = User()
 
     var body: some View {
         VStack {
-            Text("Your name is \(user.firstName) \(user.lastName)")
-
-            TextField("First name", text: $user.firstName)
-            TextField("Last name", text: $user.lastName)
+            EditView().environmentObject(user)
+            DisplayView().environmentObject(user)
         }
         .padding()
     }
