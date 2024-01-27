@@ -41,7 +41,7 @@ struct HomeView: View {
     // @ObservedObject updates the property changes when it receives announcement
     // @ObservedObject is the first choice when working with class
     // receiver
-    @ObservedObject var user = User()
+//    @ObservedObject var user = User()
 
     var body: some View {
         VStack {
@@ -49,7 +49,6 @@ struct HomeView: View {
             DisplayView()
         }
         .padding()
-        .environmentObject(user)
     }
 }
 

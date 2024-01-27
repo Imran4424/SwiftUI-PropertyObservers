@@ -12,7 +12,7 @@ struct PropertyObserversApp: App {
     var body: some Scene {
         WindowGroup {
             HomeView()
-//                .environmentObject(User())
+                .environmentObject(User())
         }
     }
 }
