@@ -7,6 +7,24 @@
 
 import SwiftUI
 
+@MainActor
+class DelayedUpdater: ObservableObject {
+    // manually doing publisher's work
+    var value = 0 {
+        willSet {
+            objectWillChange.send()
+        }
+    }
+    
+    init() {
+        for i in 1...10 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + Double(i)) {
+                self.value += 1
+            }
+        }
+    }
+}
+
 // we use class for sharing the data into multiple views
 class User: ObservableObject {
     // here
@@ -25,13 +43,29 @@ struct ContentView: View {
     // we need to share data into multiple views (because everytime creates a new class instances)
     // receiver
     @StateObject private var user = User()
+    
+    @StateObject private var updater = DelayedUpdater()
+    @State private var isDelayedShowing = false
 
     var body: some View {
         VStack {
-            Text("Your name is \(user.firstName) \(user.lastName)")
+            Toggle(isOn: $isDelayedShowing) {
+                Text("Show Delay")
+            }
+            .padding()
+            
+            Spacer()
+            
+            if isDelayedShowing {
+                Text("value is \(updater.value)")
+            } else {
+                Text("Your name is \(user.firstName) \(user.lastName)")
 
-            TextField("First name", text: $user.firstName)
-            TextField("Last name", text: $user.lastName)
+                TextField("First name", text: $user.firstName)
+                TextField("Last name", text: $user.lastName)
+            }
+            
+            Spacer()
         }
         .padding()
     }
